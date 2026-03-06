@@ -4,7 +4,7 @@ set -eu
 # Install build dependencies on Linux
 if [ "$(uname -s)" = "Linux" ]; then
   if command -v apt-get >/dev/null 2>&1; then
-    sudo apt-get update && sudo apt-get install -y build-essential curl git
+    sudo apt-get update && sudo apt-get install -y build-essential curl git passwd
   elif command -v dnf >/dev/null 2>&1; then
     sudo dnf install -y gcc curl git
   fi
