@@ -7,6 +7,4 @@ if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; 
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-echo "Source dir: {{ .chezmoi.sourceDir }}"
-echo "Brewfile exists: $(ls {{ .chezmoi.sourceDir }}/Brewfile 2>&1)"
 brew bundle install --file="{{ .chezmoi.sourceDir }}/Brewfile"

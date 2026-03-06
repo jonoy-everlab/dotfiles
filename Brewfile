@@ -22,4 +22,3 @@ brew "tmuxinator"
 # db
 brew "libpq"
 brew "pgcli"
-brew "postgresql@16"
