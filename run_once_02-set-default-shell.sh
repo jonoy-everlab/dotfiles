@@ -8,12 +8,21 @@ fi
 
 FISH="$(command -v fish)"
 
-# Add fish to /etc/shells if not already there
-grep -qF "$FISH" /etc/shells || echo "$FISH" | sudo tee -a /etc/shells
+# Use sudo only if not already root
+if [ "$(id -u)" = "0" ]; then
+  SUDO=""
+else
+  SUDO="sudo"
+fi
 
-# Set fish as default shell (chsh may not be available on all systems)
-if command -v chsh >/dev/null 2>&1; then
-  [ "$SHELL" = "$FISH" ] || chsh -s "$FISH"
-elif [ -f /etc/passwd ]; then
-  sudo usermod -s "$FISH" "$(whoami)" 2>/dev/null || true
+# Add fish to /etc/shells if not already there
+grep -qF "$FISH" /etc/shells || echo "$FISH" | $SUDO tee -a /etc/shells
+
+# Set fish as default shell
+if [ "$SHELL" != "$FISH" ]; then
+  if command -v chsh >/dev/null 2>&1; then
+    chsh -s "$FISH"
+  else
+    $SUDO usermod -s "$FISH" "$(whoami)" 2>/dev/null || true
+  fi
 fi

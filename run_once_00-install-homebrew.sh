@@ -1,12 +1,19 @@
 #!/bin/sh
 set -eu
 
+# Use sudo only if not already root
+if [ "$(id -u)" = "0" ]; then
+  SUDO=""
+else
+  SUDO="sudo"
+fi
+
 # Install build dependencies on Linux
 if [ "$(uname -s)" = "Linux" ]; then
   if command -v apt-get >/dev/null 2>&1; then
-    sudo apt-get update && sudo apt-get install -y build-essential curl git passwd
+    $SUDO apt-get update && $SUDO apt-get install -y build-essential curl git
   elif command -v dnf >/dev/null 2>&1; then
-    sudo dnf install -y gcc curl git
+    $SUDO dnf install -y gcc curl git
   fi
 fi
 
