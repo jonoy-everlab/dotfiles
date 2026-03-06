@@ -1,0 +1,6 @@
+#!/bin/sh
+{{ if ne .chezmoi.os "darwin" }}exit 0{{ end }}
+set -eu
+
+brew tap stripe/stripe-cli
+brew install google-cloud-sdk stripe/stripe-cli/stripe

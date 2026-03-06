@@ -1,7 +1,3 @@
-{{ if eq .chezmoi.os "darwin" -}}
-tap "stripe/stripe-cli"
-{{ end -}}
-
 # core
 brew "chezmoi"
 brew "curl"
@@ -27,11 +23,3 @@ brew "tmuxinator"
 brew "libpq"
 brew "pgcli"
 brew "postgresql@16"
-
-{{ if eq .chezmoi.os "darwin" -}}
-# cloud
-brew "google-cloud-sdk"
-
-# other
-brew "stripe/stripe-cli/stripe"
-{{ end -}}

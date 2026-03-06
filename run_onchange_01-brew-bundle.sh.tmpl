@@ -1,5 +1,5 @@
 #!/bin/sh
-# runs whenever Brewfile changes: {{ include "Brewfile.tmpl" | sha256sum }}
+# runs whenever Brewfile changes: {{ include "Brewfile" | sha256sum }}
 set -eu
 
 # Ensure brew is on PATH (Linux)
@@ -7,4 +7,6 @@ if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; 
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-brew bundle install --file="$HOME/Brewfile"
+echo "Source dir: {{ .chezmoi.sourceDir }}"
+echo "Brewfile exists: $(ls {{ .chezmoi.sourceDir }}/Brewfile 2>&1)"
+brew bundle install --file="{{ .chezmoi.sourceDir }}/Brewfile"
