@@ -19,7 +19,7 @@ fi
 grep -qF "$FISH" /etc/shells || echo "$FISH" | $SUDO tee -a /etc/shells
 
 # Set fish as default shell
-if [ "$SHELL" != "$FISH" ]; then
+if [ "${SHELL:-}" != "$FISH" ]; then
   if command -v chsh >/dev/null 2>&1; then
     chsh -s "$FISH"
   else
