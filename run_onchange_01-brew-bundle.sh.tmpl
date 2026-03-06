@@ -1,0 +1,10 @@
+#!/bin/sh
+# runs whenever Brewfile changes: {{ include "Brewfile" | sha256sum }}
+set -eu
+
+# Ensure brew is on PATH (Linux)
+if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+brew bundle install --file="{{ .chezmoi.sourceDir }}/Brewfile" --no-lock

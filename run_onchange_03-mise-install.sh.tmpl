@@ -1,0 +1,5 @@
+#!/bin/sh
+# runs whenever mise config changes: {{ include "private_dot_config/mise/config.toml" | sha256sum }}
+set -eu
+
+mise install

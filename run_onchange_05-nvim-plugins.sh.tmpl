@@ -1,0 +1,7 @@
+#!/bin/sh
+# runs whenever lazyvim extras or lockfile changes
+# lazyvim.json: {{ include "private_dot_config/nvim/lazyvim.json" | sha256sum }}
+# lazy-lock.json: {{ include "private_dot_config/nvim/lazy-lock.json" | sha256sum }}
+set -eu
+
+nvim --headless "+Lazy! sync" +qa
