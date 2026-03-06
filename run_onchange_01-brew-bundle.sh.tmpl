@@ -1,5 +1,5 @@
 #!/bin/sh
-# runs whenever Brewfile changes: {{ include "Brewfile" | sha256sum }}
+# runs whenever Brewfile changes: {{ include "Brewfile.tmpl" | sha256sum }}
 set -eu
 
 # Ensure brew is on PATH (Linux)
