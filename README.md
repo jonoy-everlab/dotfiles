@@ -5,7 +5,7 @@
 Paste this into any terminal (macOS or Linux):
 
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/yourusername/dotfiles
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:jonoy-everlab/dotfiles.git
 ```
 
 That's it. The following runs automatically:
