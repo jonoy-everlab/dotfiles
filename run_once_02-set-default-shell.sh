@@ -20,9 +20,10 @@ grep -qF "$FISH" /etc/shells || echo "$FISH" | $SUDO tee -a /etc/shells
 
 # Set fish as default shell
 if [ "${SHELL:-}" != "$FISH" ]; then
-  if command -v chsh >/dev/null 2>&1; then
-    chsh -s "$FISH"
+  if [ "$(uname -s)" = "Linux" ]; then
+    # chsh requires PAM auth in containers; usermod does not
+    $SUDO usermod -s "$FISH" "$(whoami)"
   else
-    $SUDO usermod -s "$FISH" "$(whoami)" 2>/dev/null || true
+    chsh -s "$FISH"
   fi
 fi
