@@ -1,6 +1,9 @@
 #!/bin/sh
 set -eu
 
+# Skip if fish is not installed
+command -v fish >/dev/null 2>&1 || exit 0
+
 # Ensure brew is on PATH (Linux)
 if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
