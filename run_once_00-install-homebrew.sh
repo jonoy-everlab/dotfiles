@@ -24,7 +24,8 @@ command -v brew >/dev/null 2>&1 && exit 0
 
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Add brew to PATH on Linux for subsequent scripts
+# Add brew to PATH on Linux for subsequent scripts and persist to profile
 if [ "$(uname -s)" = "Linux" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  grep -qF 'linuxbrew' "$HOME/.profile" 2>/dev/null || echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.profile"
 fi
