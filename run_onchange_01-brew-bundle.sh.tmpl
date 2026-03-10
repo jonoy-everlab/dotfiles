@@ -9,4 +9,4 @@ if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; 
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-brew bundle install --file="{{ .chezmoi.sourceDir }}/Brewfile"
+brew bundle install --verbose --file="{{ .chezmoi.sourceDir }}/Brewfile"
