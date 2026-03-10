@@ -1,5 +1,7 @@
 # core
 brew "chezmoi"
+brew "curl"
+brew "git"
 brew "wget"
 brew "unzip"
 brew "jq"
