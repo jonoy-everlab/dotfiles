@@ -1,24 +1,24 @@
- # nvim - don't track generated/cache files
- nvim/.netrwhist
- nvim/lazy-lock.json    # optional: track if you want pinned plugins
- nvim/plugin/           # compiled plugin state
+# nvim
+nvim/.netrwhist
+# nvim/lazy-lock.json  # uncomment to not pin plugins
+nvim/plugin/
 
- # mise - don't track local overrides
- mise/config.local.toml
+# mise
+mise/config.local.toml
 
- # fish - don't track history/cache
- fish/fish_history
- fish/.fish_history
+# fish
+fish/fish_history
+fish/.fish_history
 
- # general
- **/.DS_Store
- **/*.log
- **/*.cache
- **/node_modules
+# general
+**/.DS_Store
+**/*.log
+**/*.cache
+**/node_modules
 
- gcloud/**
- gh/**
- cloudflare/**
- inngest/**
- cagent/**
- pgcli/**
+gcloud/**
+gh/**
+cloudflare/**
+inngest/**
+cagent/**
+pgcli/**

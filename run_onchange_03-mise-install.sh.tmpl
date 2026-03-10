@@ -2,4 +2,9 @@
 # runs whenever mise config changes: {{ include "private_dot_config/mise/config.toml" | sha256sum }}
 set -eu
 
+# Ensure brew is on PATH (Linux)
+if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 mise install
