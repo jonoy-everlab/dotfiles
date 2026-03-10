@@ -2,7 +2,7 @@
 # runs whenever Brewfile changes: {{ include "Brewfile" | sha256sum }}
 set -eu
 
-echo ">>> [onchange-01] brew-bundle: starting"
+echo ">>> [onchange-01] brew-bundle: starting (user: $(whoami), home: $HOME, shell: $SHELL)"
 
 # Ensure brew is on PATH (Linux)
 if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then

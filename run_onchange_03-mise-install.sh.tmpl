@@ -2,7 +2,7 @@
 # runs whenever mise config changes: {{ include "private_dot_config/mise/config.toml" | sha256sum }}
 set -eu
 
-echo ">>> [onchange-03] mise-install: starting"
+echo ">>> [onchange-03] mise-install: starting (user: $(whoami), home: $HOME, shell: $SHELL)"
 
 # Ensure brew is on PATH (Linux)
 if [ "$(uname -s)" = "Linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then

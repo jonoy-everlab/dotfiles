@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-echo ">>> [02] set-default-shell: starting"
+echo ">>> [02] set-default-shell: starting (user: $(whoami), home: $HOME, shell: $SHELL)"
 
 # Ensure brew is on PATH
 if [ "$(uname -s)" = "Linux" ]; then

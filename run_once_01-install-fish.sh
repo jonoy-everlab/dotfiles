@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-echo ">>> [01] install-fish: starting"
+echo ">>> [01] install-fish: starting (user: $(whoami), home: $HOME, shell: $SHELL)"
 
 # Ensure brew is on PATH
 if [ "$(uname -s)" = "Linux" ]; then
