@@ -1,3 +1,26 @@
-#!/usr/bin/env fish
+#!/bin/sh
 # runs whenever fish_plugins changes: {{ include "private_dot_config/private_fish/fish_plugins" | sha256sum }}
-fisher update
+
+echo ">>> [onchange-04] fisher-plugins: starting (user: $(whoami), home: $HOME, shell: $SHELL)"
+
+# Ensure brew is on PATH
+if [ "$(uname -s)" = "Linux" ]; then
+  [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+else
+  [ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+  [ -f "/usr/local/bin/brew" ] && eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Find fish — check PATH first, then common brew locations
+FISH=$(command -v fish 2>/dev/null \
+  || echo /home/linuxbrew/.linuxbrew/bin/fish \
+  || echo /opt/homebrew/bin/fish \
+  || echo /usr/local/bin/fish)
+
+if [ ! -x "$FISH" ]; then
+  echo ">>> fish not found, skipping fisher update"
+  exit 0
+fi
+
+echo ">>> fish found at: $FISH"
+"$FISH" -c "fisher update"
