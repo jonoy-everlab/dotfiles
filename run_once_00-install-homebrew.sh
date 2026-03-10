@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 
+echo ">>> [00] install-homebrew: starting"
+
 # Use sudo only if not already root
 if [ "$(id -u)" = "0" ]; then
   SUDO=""

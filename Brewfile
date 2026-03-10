@@ -17,7 +17,6 @@ brew "neovim"
 # dev tools
 brew "mise"
 brew "tmux"
-brew "tmuxinator"
 
 # db
 brew "libpq"

@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 
+echo ">>> [01] install-fish: starting"
+
 # Ensure brew is on PATH
 if [ "$(uname -s)" = "Linux" ]; then
   [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

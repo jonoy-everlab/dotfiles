@@ -35,6 +35,7 @@ fish_add_path /opt/homebrew/opt/libpq/bin
 {{ end -}}
 
 # gcloud completions
-if command -v gcloud >/dev/null 2>&1
-    source (brew --prefix)/share/google-cloud-sdk/path.fish.inc
+set -l gcloud_fish_inc (brew --prefix)/share/google-cloud-sdk/path.fish.inc
+if test -f $gcloud_fish_inc
+    source $gcloud_fish_inc
 end
